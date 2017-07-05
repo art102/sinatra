@@ -15,7 +15,7 @@ post '/' do
 
 	# Добавляем имя, телефон и дату в файл users.txt и закрываем файл
 	file = File.open('users.txt', 'a')
-	file.write("Name:#{@name}, Phone:#{@phone}, Date and time:#{@date}\n")
+	file.write("Name: #{@name}, Phone: #{@phone}, Date and time: #{@date}\n")
 	file.close
 	
 	erb :message
