@@ -20,3 +20,20 @@ post '/' do
 	
 	erb :message
 end
+
+get '/admin' do
+	erb :admin_page
+end
+
+post '/admin' do
+	@admin = params[:admin_user]
+	@pass = params[:passwd]
+
+	if @admin == 'admin' && @pass == 'pa$$word'
+		@users_list = File.open("users.txt","r")
+		erb :list_users
+		@users_list.close
+	else
+		erb :admin_page
+	end
+end
