@@ -14,7 +14,7 @@ post '/' do
 	@message = "Dear #{@name}, we'll be waitng for you at #{@date}"
 
 	# Добавляем имя, телефон и дату в файл users.txt и закрываем файл
-	file = File.open('users.txt', 'a')
+	file = File.open('./public/users.txt', 'a')
 	file.write("Name: #{@name}, Phone: #{@phone}, Date and time: #{@date}\n")
 	file.close
 	
@@ -30,7 +30,7 @@ post '/admin' do
 	@pass = params[:passwd]
 
 	if @admin == 'admin' && @pass == 'pa$$word'
-		@users_list = File.open("users.txt","r")
+		@users_list = File.open("./public/users.txt","r")
 		erb :list_users
 		@users_list.close
 	else
